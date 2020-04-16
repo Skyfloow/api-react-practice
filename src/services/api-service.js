@@ -14,12 +14,12 @@ export default class apiService {
 
   async getAllСharacter() {
     const res = await this.getResource('/character/');
-    return res.results.map(this._transofrmCharacter);
+    return res.results.map(this._transofrmСharacter);
   }
 
   async getСharacter(id) {
     const character = await this.getResource(`/character/${id}/`);
-    return this._transofrmCharacter(character);
+    return this._transofrmСharacter(character);
   }
 
   async getAllLocations() {
@@ -49,7 +49,9 @@ export default class apiService {
       name: character.name,
       status: character.status,
       species: character.species,
-      gender: character.gender
+      gender: character.gender,
+      origin: character.origin.name,
+      location: character.location.name
     };
   };
 
