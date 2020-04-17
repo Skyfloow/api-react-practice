@@ -10,11 +10,7 @@ export default class CharactersDetails extends Component {
   state = {
     characters: null
   };
-
-  componentDidMount() {
-    this.updateCharacters();
-  }
-  
+    
   componentDidUpdate(prevProps) {
     if (this.props.charactersId !== prevProps.charactersId) {
       this.updateCharacters();
