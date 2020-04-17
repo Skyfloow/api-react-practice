@@ -15,8 +15,7 @@ export default class RandomCharacters extends Component {
     loading: true
   };
 
-  constructor() {
-    super();
+  componentDidMount() {
     this.updateCharacters();
   }
 
@@ -44,6 +43,7 @@ export default class RandomCharacters extends Component {
   };
 
   render() {
+
     const  { characters, loading, error } = this.state;
 
     const hasData = !(loading || error); 
