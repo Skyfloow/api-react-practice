@@ -1,30 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import CharactersDetails from '../characters-details/characters-details';
 import RandomCharacters from '../random-characters/random-characters';
-import ItemList from '../item-list/item-list';
+import ErrorIndicator from '../error-indicator';
+import ChractersPage from '../characters-page/characters-page';
 
 import './App.sass';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <RandomCharacters />
-      <div className="components-list container-fluid">
-        <div className="row mb-2">
-          <div className="col-md-6">
-            <ItemList />
-          </div>
-          <div className="col-md-6">
-            <CharactersDetails />
-          </div>
-        </div>
-      </div>
-      <Footer/>
-    </div>
-  );
-}
+export default class App extends Component {
 
-export default App;
+  state = {
+    hasError: false
+  };
+
+  componentDidCatch() {
+    this.setState({ hasError: true});
+  }
+
+  render(){
+
+    if (this.state.hasError) {
+      return <ErrorIndicator />
+    }
+
+    return (
+      <div className="App">
+        <Header />
+        <RandomCharacters />  
+        <ChractersPage />
+        <Footer />
+      </div>
+    );
+  }
+}
