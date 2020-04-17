@@ -10,7 +10,7 @@ export default class CharactersDetails extends Component {
   state = {
     characters: null
   };
-    
+
   componentDidUpdate(prevProps) {
     if (this.props.charactersId !== prevProps.charactersId) {
       this.updateCharacters();
@@ -34,7 +34,7 @@ export default class CharactersDetails extends Component {
   render() {
 
     if (!this.state.characters) {
-      return <div><span>Select a character from a list</span></div>;
+      return <div className="select-character">Select a character from a list</div>;
     }
 
     const { image, id , name, status, 
