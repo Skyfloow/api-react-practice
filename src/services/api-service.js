@@ -12,35 +12,35 @@ export default class apiService {
     return await res.json();
   }
 
-  async getAllСharacter() {
+  getAllСharacter = async () => {
     const res = await this.getResource('/character/');
     return res.results.map(this._transofrmСharacter);
-  }
+  };
 
-  async getСharacter(id) {
+  getСharacter = async (id) => {
     const character = await this.getResource(`/character/${id}/`);
     return this._transofrmСharacter(character);
-  }
+  };
 
-  async getAllLocations() {
-    const res = this.getResource(`/location/`);
+  getAllLocations = async () => {
+    const res = await this.getResource(`/location/`);
     return res.results.map(this._transofrmLocation);
-  }
+  };
 
-  async getLocation(id) {
+  getLocation = async (id) => {
     const location = await this.getResource(`/location/${id}/`);
     return this._transofrmLocation(location);
-  }
+  };
 
-  async getAllEpisodes() {
+  getAllEpisodes = async () => {
     const res = await this.getResource(`/episode/`);
     return res.results.map(this._transofrmEpisode);
-  }
+  };
 
-  async getEpisode(id) {
+  getEpisode = async (id) => {
     const episode = await this.getResource(`/episode/${id}/`);
     return this._transofrmEpisode(episode);
-  }
+  };
 
   _transofrmСharacter = (character) => {
     return {
@@ -72,7 +72,7 @@ export default class apiService {
       name: episode.name,
       air_date: episode.air_date,
       episode: episode.episode,
-      characters: episode.characters,
+      characters: episode.characters[0],
       created: episode.created
     };
   };

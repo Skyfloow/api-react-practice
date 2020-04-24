@@ -1,35 +1,32 @@
 import React, {Component} from 'react';
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import RandomCharacters from '../random-characters/random-characters';
-import ErrorIndicator from '../error-indicator';
-import ChractersPage from '../characters-page/characters-page';
+import Header from '../header';
+import Footer from '../footer';
+import RandomCharacters from '../random-characters';
+import ErrorBoundry from '../error-boundary';
+import ApiService from '../../services/api-service';
+import { ApiServiceProvider } from '../api-service-context';
+import { CharactersPage, LocationsPage, EpisodesPage } from '../pages';
 
 import './App.sass';
 
 export default class App extends Component {
 
-  state = {
-    hasError: false
-  };
-
-  componentDidCatch() {
-    this.setState({ hasError: true});
-  }
+  apiService = new ApiService();
 
   render(){
-
-    if (this.state.hasError) {
-      return <ErrorIndicator />
-    }
-
     return (
-      <div className="App">
-        <Header />
-        <RandomCharacters />  
-        <ChractersPage />
-        <Footer />
-      </div>
+      <ErrorBoundry>
+        <ApiServiceProvider value={this.apiService}>
+          <div className="App">
+            <Header />
+            <RandomCharacters /> 
+            <CharactersPage />
+            <LocationsPage />
+            <EpisodesPage />
+            <Footer />
+          </div>
+        </ApiServiceProvider>
+      </ErrorBoundry>
     );
   }
 }
