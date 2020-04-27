@@ -50,13 +50,17 @@ export default class ItemDetails extends Component {
     }
 
     const { image, name } = item;
-      
+
+    const imgBlock =  <img className="character-image"
+                        src={`${image}`} 
+                        alt={`characters: ${name}`} />;
+    
+    const isImg = image ? imgBlock : null;
+
     return (
       <div className="character-details card">
-        <img className="character-image"
-          src={`${image}`} 
-          alt={`characters: ${name}`}
-        />
+        
+       { isImg }
 
         <div className="card-body">
           <h4>{name}</h4>
