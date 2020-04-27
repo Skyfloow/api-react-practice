@@ -3,6 +3,7 @@ import ItemDetails, { Record } from '../item-details/item-details';
 import { withApiService } from '../helpers';
 
 const CharacterDetails = (props) => {
+
   return(
     <ItemDetails {...props}>
       <Record field="id" label="Id" />

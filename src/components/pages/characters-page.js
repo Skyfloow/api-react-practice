@@ -1,27 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Row from '../row';
-import {CharacterDetails, CharacterList} from '../api-components';
+import { CharacterDetails, CharacterList } from '../api-components';
 
-export default class CharactersPage extends Component {
+const CharactersPage = ({ history, match }) => {
+  return (
+    <Row
+      left={<CharacterList onItemSelected={(id) => history.push(`${id}`)} />}
+      right={<CharacterDetails itemId={match.params.id} />}
+    />
+  );
+};
 
-  state = {
-    selectedItem: null
-  }
-
-  onItemSelected = (selectedItem) => {
-    this.setState({ selectedItem });
-  };
-
-  render() {
-
-    const { selectedItem } = this.state;
-
-    return (
-      <Row
-        left={<CharacterList onItemSelected={this.onItemSelected} />}
-        right={<CharacterDetails itemId={selectedItem}/>}
-      />
-    )
-  }
-
-}
+export default withRouter(CharactersPage);

@@ -1,27 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Row from '../row';
-import {EpisodeDetails, EpisodeList} from '../api-components';
+import { EpisodeDetails, EpisodeList } from '../api-components';
 
-export default class EpisodesPage extends Component {
+const EpisodesPage = ({ history, match }) => {
+  return (
+    <Row
+      left={<EpisodeList onItemSelected={(id) => history.push(`${id}`)} />}
+      right={<EpisodeDetails itemId={match.params.id} />}
+    />
+  );
+};
 
-  state = {
-    selectedItem: null
-  }
-
-  onItemSelected = (selectedItem) => {
-    this.setState({ selectedItem });
-  };
-
-  render() {
-
-    const { selectedItem } = this.state;
-
-    return (
-      <Row
-        left={<EpisodeList onItemSelected={this.onItemSelected} />}
-        right={<EpisodeDetails itemId={selectedItem}/>}
-      />
-    )
-  }
-
-}
+export default withRouter(EpisodesPage);

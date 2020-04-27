@@ -1,27 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Row from '../row';
-import {LocationDetails, LocationList} from '../api-components';
+import { LocationDetails, LocationList } from '../api-components';
 
-export default class LocationsPage extends Component {
+const LocationsPage = ({ history, match }) => {
+  return (
+    <Row
+      left={<LocationList onItemSelected={(id) => history.push(`${id}`)} />}
+      right={<LocationDetails itemId={match.params.id} />}
+    />
+  );
+};
 
-  state = {
-    selectedItem: null
-  }
-
-  onItemSelected = (selectedItem) => {
-    this.setState({ selectedItem });
-  };
-
-  render() {
-
-    const { selectedItem } = this.state;
-
-    return (
-      <Row
-        left={<LocationList onItemSelected={this.onItemSelected} />}
-        right={<LocationDetails itemId={selectedItem}/>}
-      />
-    )
-  }
-
-}
+export default withRouter(LocationsPage);
