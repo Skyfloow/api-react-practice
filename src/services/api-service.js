@@ -61,7 +61,7 @@ export default class apiService {
       name: location.name,
       type: location.type,
       dimension: location.dimension,
-      residents: location.residents,
+      residents: location.residents[0],
       created: location.created
     };
   };
