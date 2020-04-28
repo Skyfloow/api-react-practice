@@ -27,9 +27,9 @@ export default class App extends Component {
                 <Route path="/" render={() => 
                                           <div className="jumbotron">
                                             <h2>Welocme to The Rick & Morty API</h2>
-                                            <br/>
                                             <p>The card on top is a random character.</p>
                                             <p>Select one of the items in the top menu to get more information.</p>
+                                            <p>All data was taken from this <a href="https://rickandmortyapi.com/">resource</a>.</p>
                                           </div>
                                         } exact />
                 <Route path="/characters/:id?" component={CharactersPage} />

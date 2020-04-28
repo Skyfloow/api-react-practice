@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer mt-auto">
       <div className="inner">
-        <p>Create with <img className="footer-logo" 
+        <p>Created with <img className="footer-logo" 
                                 src={reactIcon} 
                                 alt="react" />,
           by <a href="https://t.me/Skyfloow/" 
