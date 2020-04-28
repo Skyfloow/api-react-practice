@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './header.sass';
 import gitIcon from './header-git-logo.png';
@@ -18,12 +19,9 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link className="nav-item nav-link active" to="/characters/">
-              Characters 
-              <span className="sr-only">(current)</span>
-            </Link>
-            <Link className="nav-item nav-link" to="/episodes/">Episodes</Link>
-            <Link className="nav-item nav-link" to="/locations/">Locations</Link>
+            <NavLink activeClassName="active" className="nav-item nav-link" to="/characters/">Characters</NavLink>
+            <NavLink activeClassName="active" className="nav-item nav-link" to="/episodes/">Episodes</NavLink>
+            <NavLink activeClassName="active" className="nav-item nav-link" to="/locations/">Locations</NavLink>
           </div>
         </div>
         <a href="https://github.com/Skyfloow/" 
